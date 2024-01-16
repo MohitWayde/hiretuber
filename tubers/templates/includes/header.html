@@ -1,0 +1,27 @@
+  {% block content %}
+  
+  <header class="header ">
+    <div class="container">
+      <div class="row ">
+        <div class="col-md-6 header-info">
+        {% comment %} {% for s in sub %} {% endcomment %}
+        welcome  <span>{{ user.username }}</span> !!
+        {% comment %} {% endfor %} {% endcomment %}
+        </div>
+        <div class="header-buttons col-md-6 d-flex justify-content-end">
+          
+          {% if user.is_authenticated %}
+              {% comment %} <a class="btn btn-accent mr-3" href="{% url 'dashboard' %}">AD Dashboard</a> {% endcomment %}
+              {% comment %} <a class="btn btn-accent mr-3" href="{% url 'dashboard_youtuber'%}">YT Dashboard</a> {% endcomment %}            
+              <a class="btn btn-accent mr-3" href="{% url 'logout' %}">Logout</a>
+          {% else %}
+              <a class="btn btn-accent mr-3" href="{% url 'selection_for_login' %}">Login</a>
+              <a class="btn btn-accent mr-3" href="{% url 'selection_for_register' %}">Register</a>
+          {% endif %}
+          
+           
+        </div>
+      </div>
+    </div>
+  </header>
+  {% endblock content %}

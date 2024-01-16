@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock title %}
+{% load static %}
+{% block content %}
+
+<main class="contact-us">
+  <div class="banner">
+    <img src="{% static './assets/images/bg-banner.png' %}" alt="" class="img-fluid w-100">
+    <h1 class="text-center">
+      Dashboard
+    </h1>
+  </div>
+
+  {% include 'messages.html' %}
+  <section class="container mt-5">
+    <h2 class="text-center">Welcome to Dashboard</h2>
+    <h4 class="text-center text-white-50">
+      Hi, {{ user.username }}. Hope you are having a good day
+    </h4>
+
+    <div class="table-responsive- mt-3">
+      {% for hire in hiredata %}
+          {% if hire %}
+              <h2 class="text-center">Your contacted youtubers</h2>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">YTubers_name</th>
+                    <th scope="col">City</th>
+                    <th scope="col" style="text-align: center;">Visit</th>
+                  </tr>
+                </thead>
+                <tdata>
+                    <tr>
+                        <td scope="col">{{ hire.tuber_name }}</td>
+                        <td scope="col">{{ hire.city }}</td>
+                        {% for obj in mytuber %}
+                            {% if obj.name == hire.tuber_name %}
+                                <td scope="col" style="text-align: center;">
+                                    <a class="btn btn-accent" href=" {% url 'youtubers_detail' obj.id %} ">{{hire.tuber_name}} dashboard</a>
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                </tdata>   
+            </table>
+          {% endif %}
+      {% endfor %}
+    </div>
+    {% for m in msgs %}
+      {% if m %}
+    <h2 class="text-center">Responses from youtubers</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">YTubers_name</th>
+          <th scope="col">Response</th>
+        </tr>
+        
+            <tdata>
+              <tr>
+                <td scope="col">{{ m.user }}</td>
+                <td scope="col">{{ m.ytmsg }}</td>
+              </tr>
+            </tdata>
+            {% endif %}
+        {% endfor %}
+      </thead>
+    </table>
+    
+  </section>
+</main>
+
+{% endblock content %}

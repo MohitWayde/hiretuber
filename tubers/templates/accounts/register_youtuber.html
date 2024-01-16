@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}Register as youtuber{% endblock title %}
+{% load static %}
+{% block content %}
+
+{% load socialaccount %}
+{% providers_media_js %}
+
+<main class="register container">
+  <h1 class="text-center mt-5 mb-5">
+    Register as youtuber
+  </h1>
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      {% include 'messages.html' %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 ">
+      <img src="{% static './assets/images/login-image.png' %}" class="img-fluid" alt="img">
+    </div>
+
+    <form method="POST" action="{% url 'register_youtuber' %}" class="col-md-5 offset-md-1" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group">
+        <input name="name" type="text" class="form-control" placeholder="Enter your name" required>
+      </div>
+      <div class="form-group">
+        <input name="price" type="text" class="form-control" placeholder="Enter your price" required>
+      </div>
+      <div class="form-group">
+        <label for="photo">Profile Photo :</label>
+        <input id="photo" name="photo" type="file" required>
+      </div>
+      <div class="form-group">
+        <input name="video_url" type="text" class="form-control" placeholder="Enter your video url" required>
+      </div>
+      <div class="form-group">
+        <textarea name="description" class="form-control" placeholder="Enter your description"></textarea>
+      </div>
+      <div class="form-group">
+        <input name="city" type="text" class="form-control" placeholder="Enter your city" required>
+      </div>
+
+      <div class="form-group">
+        <input name="age" type="text" class="form-control" placeholder="Enter your age" required>
+      </div>
+
+      <div class="form-group">
+        <input name="height" type="text" class="form-control" placeholder="Enter your height" required>
+      </div>
+
+      <div class="form-group">
+        <input name="crew" type="text" class="form-control" placeholder="Enter your crew-solo/small/large" required>
+      </div>
+
+      <div class="form-group">
+        <input name="camera_type" type="text" class="form-control" placeholder="Enter your camera type" required>
+      </div>
+
+      <div class="form-group">
+        <input name="subs_count" type="text" class="form-control" placeholder="Enter your subscribers count" required>
+      </div>
+
+      <div class="form-group">
+        <input name="category" type="text" class="form-control" placeholder="Enter your category">
+      </div>
+
+      <div class="form-group">
+        <input name = "username" type="text" class="form-control" placeholder="Enter your Username" required>
+      </div>
+
+      <div class="form-group">
+        <input type="Password" name = "password" class="form-control" placeholder="Password" required>
+      </div>
+      <div class="form-group">
+        <input type="Password" name = "confirm_password" class="form-control" placeholder="Confirm Password" required>
+      </div>
+
+      <button type="submit" class="btn btn-accent form-btn w-100 mt-3 mb-3">Register</button>
+
+
+    </form>
+  </div>
+</main>
+
+{% endblock content %}

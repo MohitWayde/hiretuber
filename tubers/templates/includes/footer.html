@@ -1,0 +1,44 @@
+<footer>
+    <div class="bg-accent mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 text-lg-left text-center">
+            <h4>
+              Reach out to hire YTubers
+            </h4>
+          </div>
+
+          <div class="col-sm-6 text-lg-right text-center">
+            <a class="btn btn-light" href = "{% url 'contact' %}">
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 text-lg-left text-center">
+          <h5>
+            2020 YTubers for Hire
+          </h5>
+        </div>
+        <div class="col-md-4 text-lg-center text-center">
+          <h5>
+            All Rights Reserved
+          </h5>
+        </div>
+        <div class="col-md-4 text-lg-right text-center">
+          <div>         
+          {% for s in sub %}
+            <a href = "{{ s.facebooklink }}"  class="btn btn-accent" target="_blank"> <i class="fab fa-facebook-f fa-lg"></i> </a>
+            <a href = "{{ s.instalink }}" class="btn btn-accent"  target="_blank"> <i class="fab fa-instagram fa-lg"></i> </a>
+            <a href = "{{ s.twitterlink }}" class="btn btn-accent"  target="_blank"> <i class="fab fa-twitter fa-lg"></i> </a>
+            <a href = "{{ s.youtubelink }}" class="btn btn-accent"  target="_blank"> <i class="fab fa-youtube fa-lg"></i> </a>        
+          {% endfor %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
